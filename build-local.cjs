@@ -4,6 +4,7 @@ let scene = source.split('<script>')[2].split('</script>')[0];
 scene = scene.replace("audio.querySelector('source').src=CONFIG.musica;", "audio.src=CONFIG.musica;");
 scene = scene.replace('const WORD_SLOTS=150;', 'const WORD_SLOTS=64;');
 scene = scene.replace('const PHOTO_COUNT=26;', 'const PHOTO_COUNT=18;');
+scene = scene.replace('fontSize>24', 'fontSize>14');
 scene = scene.replaceAll("'Indie Flower', cursive", "'Georgia', serif");
 scene = scene.replace('let targetDist=300,currentDist=300,rotX=0.2,rotY=0;', 'let targetDist=440,currentDist=440,rotX=0.42,rotY=0;');
 scene = scene.replace("addEventListener('mousedown'", "canvas.addEventListener('mousedown'").replace("addEventListener('touchstart'", "canvas.addEventListener('touchstart'").replace("addEventListener('wheel'", "canvas.addEventListener('wheel'");

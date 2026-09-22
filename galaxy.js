@@ -117,7 +117,7 @@ function makeTextTexture(text,color){
   const maxWidth=c.width-48;
   let fontSize=60;
   ctx.font=fontSize+"px 'Georgia', serif";
-  while(ctx.measureText(text).width>maxWidth&&fontSize>24){
+  while(ctx.measureText(text).width>maxWidth&&fontSize>14){
     fontSize-=2;
     ctx.font=fontSize+"px 'Georgia', serif";
   }
