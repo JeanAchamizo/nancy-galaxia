@@ -19,23 +19,13 @@ addEventListener('resize',()=>{
   camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();
   renderer.setSize(innerWidth,innerHeight);
 });
-const musicButton=document.getElementById('music-toggle');
-function syncMusic(){if(!audio.paused)document.getElementById('status').textContent='';musicButton.textContent=audio.paused?'♫ Activar música':'♫ Silenciar';musicButton.setAttribute('aria-pressed',String(!audio.paused));}
-audio.addEventListener('play',syncMusic);audio.addEventListener('pause',syncMusic);
-async function playMusic(){try{await audio.play();}catch{document.getElementById('status').textContent='La música no está disponible. Puedes seguir explorando.';}syncMusic();}
+async function playMusic(){try{await audio.play();document.getElementById('status').textContent='';}catch{document.getElementById('status').textContent='La música no está disponible. Puedes seguir explorando.';}}
 document.getElementById('start-button').addEventListener('click',()=>{
   started=true;document.body.classList.add('exploring');
   document.getElementById('start-screen').inert=true;
-  document.getElementById('controls').hidden=false;
-  playMusic();document.getElementById('letter-button').focus();
+  playMusic();document.querySelector('.brand').focus();
 });
-musicButton.addEventListener('click',()=>{if(audio.paused)playMusic();else audio.pause();});
-const motionButton=document.getElementById('motion-toggle');
-function syncMotion(){motionButton.textContent=paused?'▷ Animar':'Ⅱ Pausar';motionButton.setAttribute('aria-pressed',String(paused));}
-syncMotion();motionButton.addEventListener('click',()=>{paused=!paused;syncMotion();});
-document.getElementById('reset-button').addEventListener('click',()=>{targetDist=440;rotX=.42;rotY=0;});
 const letter=document.getElementById('letter');
-document.getElementById('letter-button').addEventListener('click',()=>letter.showModal());
 document.getElementById('close-letter').addEventListener('click',()=>letter.close());
 letter.addEventListener('click',e=>{if(e.target===letter){const r=letter.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)letter.close();}});
 `;
